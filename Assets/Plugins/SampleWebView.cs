@@ -142,4 +142,19 @@ public class SampleWebView : MonoBehaviour
 #endif
         yield break;
     }
+
+#if !UNITY_WEBPLAYER
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(0, 0, Screen.width, Screen.height), "*")) {
+            var g = GameObject.Find("WebViewObject");
+            if (g != null) {
+                Destroy(g);
+            } else {
+                StartCoroutine(Start());
+            }
+        }
+        GUI.enabled = true;
+    }
+#endif
 }
