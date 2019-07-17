@@ -430,10 +430,10 @@ public class WebViewObject : MonoBehaviour
 #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
         //TODO: UNSUPPORTED
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
-        rect.x = center.x + (Screen.width - scale.x)/2;
-        rect.y = center.y + (Screen.height - scale.y)/2;
-        rect.width = scale.x;
-        rect.height = scale.y;
+        rect.x = 0;
+        rect.y = 0;
+	rect.width = Screen.width;
+	rect.height = Screen.height;
 #elif UNITY_IPHONE
         if (webView == IntPtr.Zero) return;
         _CWebViewPlugin_SetFrame(webView,(int)center.x,(int)center.y,(int)scale.x,(int)scale.y);
