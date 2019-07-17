@@ -142,38 +142,4 @@ public class SampleWebView : MonoBehaviour
 #endif
         yield break;
     }
-
-#if !UNITY_WEBPLAYER
-    void OnGUI()
-    {
-        GUI.enabled = webViewObject.CanGoBack();
-        if (GUI.Button(new Rect(10, 10, 80, 80), "<")) {
-            webViewObject.GoBack();
-        }
-        GUI.enabled = true;
-
-        GUI.enabled = webViewObject.CanGoForward();
-        if (GUI.Button(new Rect(100, 10, 80, 80), ">")) {
-            webViewObject.GoForward();
-        }
-        GUI.enabled = true;
-
-        GUI.TextField(new Rect(200, 10, 300, 80), "" + webViewObject.Progress());
-
-        if (GUI.Button(new Rect(600, 10, 80, 80), "*")) {
-            var g = GameObject.Find("WebViewObject");
-            if (g != null) {
-                Destroy(g);
-            } else {
-                StartCoroutine(Start());
-            }
-        }
-        GUI.enabled = true;
-
-        if (GUI.Button(new Rect(700, 10, 80, 80), "c")) {
-            Debug.Log(webViewObject.GetCookies(Url));
-        }
-        GUI.enabled = true;
-    }
-#endif
 }
